@@ -18,8 +18,10 @@ struct UART_regs
 //! LEON3 UART A Transmit FIFO is FULL
 #define LEON3_UART_TFF (0x200)
 
+//El casting (struct   UART_regs *) te permite eliminar el warning
 struct UART_regs * pLEON3_UART_REGS = 0x80000100;
 
+//Es una macro no una función. Esto no está bien. Busca cómo definir MACROS
 #define leon3_UART_TF_IS_FULL(){ LEON3_UART_TFF & pLEON3_UART_REGS -> Status; }
 
 int8_t leon3_putchar(char c)
